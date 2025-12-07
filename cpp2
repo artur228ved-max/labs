@@ -1,0 +1,43 @@
+#include <iostream>
+
+struct Prices
+{
+    int drink;
+    int first;
+    int second;
+};
+
+struct Choice
+{
+    int drinkCount;
+    int firstCount;
+    int secondCount;
+};
+
+int CalculateCost(Prices p, Choice c)
+{
+    int sum = 0;
+    sum += p.drink * c.drinkCount;
+    sum += p.first * c.firstCount;
+    sum += p.second * c.secondCount;
+    return sum;
+}
+
+int main()
+{
+    Prices prices{ 10, 20, 30 }; // напиток 10, первое 20, второе 30
+
+    // Клиент 1: 2 напитка, 1 первое, 0 второе
+    Choice client1{ 2, 1, 0 };
+
+    // Клиент 2: 1 напиток, 0 первое, 3 вторых
+    Choice client2{ 1, 0, 3 };
+
+    int cost1 = CalculateCost(prices, client1);
+    int cost2 = CalculateCost(prices, client2);
+
+    std::cout << "Стоимость заказа клиента 1: " << cost1 << std::endl;
+    std::cout << "Стоимость заказа клиента 2: " << cost2 << std::endl;
+
+    return 0;
+}
